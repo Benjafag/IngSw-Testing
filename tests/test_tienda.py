@@ -42,14 +42,6 @@ def test_eliminar_producto_no_existente():
     
     with pytest.raises(Exception):
         tienda.eliminar_producto("Laptop")
-    
-def test_actualizar_precio_negativo():
-    tienda = Tienda()
-    prod = Producto("Laptop", 1200, "Tecnologia")
-    tienda.agregar_producto(prod)
-    
-    with pytest.raises(Exception):
-        tienda.actualizar_precio("Laptop",-1)
 
 # PRUEBA UNITARIA
 def test_tienda_inicia_inventario_vacio():
