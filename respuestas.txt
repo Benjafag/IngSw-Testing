@@ -1,0 +1,5 @@
+2) Si se podria haber escrito primero las pruebas, es lo que se conoce como TDD (Test-Driven Development o desarrollo guiado por pruebas) 
+El proceso es el siguiente y se basa en 3 fases (Red-Green-Refactor):
+    1 - Se escriben primero los test, antes que el codigo, con la informacion sobre lo que el metodo debe hacer. En esta fase si se ejecutan los test obviamente fallarán, debido a que el codigo a probarse ni siquiera esta escrito
+    2 - Se escribe lo minimo necesario para que el test deje de fallar
+    3 - Una vez que el codigo funciona, se puede pasar a limpiar el codigo, hacerlo mas eficiente, estructurarlo mejor, etc. Sabiendo q si por accidente algo deja de funcionar el framework de testing se va a encargar de avisar

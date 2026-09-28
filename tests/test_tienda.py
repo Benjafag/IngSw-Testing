@@ -1,5 +1,6 @@
 from clases.tienda import Tienda
 from clases.producto import Producto
+import pytest
 
 # PRUEBA DE INTEGRACION, ocupan las 2 clases reales interactuando entre si
 def test_agregar_y_buscar_producto():
@@ -25,19 +26,30 @@ def test_buscar_producto_existente():
 def test_buscar_producto_no_existente():
     tienda = Tienda()
     
-    resultado = tienda.buscar_producto("Laptop")
-    
-    assert resultado is None
+    with pytest.raises(Exception): # pytest.raises funciona como un assert, si algo en el cuerpo lanza una excepcion se pasa el test y si no se lanza da como fallo
+        tienda.buscar_producto("Laptop")
 
-def test_eliminar_producto():
+def test_eliminar_producto_existente():
     tienda = Tienda()
     prod = Producto("Laptop", 1200, "Tecnologia")
     
     tienda.agregar_producto(prod)
-    tienda.eliminar_producto("Laptop")
-    resultado = tienda.buscar_producto("Laptop")
+    resultado = tienda.eliminar_producto("Laptop")
+    assert resultado
+
+def test_eliminar_producto_no_existente():
+    tienda = Tienda()
     
-    assert resultado is None
+    with pytest.raises(Exception):
+        tienda.eliminar_producto("Laptop")
+    
+def test_actualizar_precio_negativo():
+    tienda = Tienda()
+    prod = Producto("Laptop", 1200, "Tecnologia")
+    tienda.agregar_producto(prod)
+    
+    with pytest.raises(Exception):
+        tienda.actualizar_precio("Laptop",-1)
 
 # PRUEBA UNITARIA
 def test_tienda_inicia_inventario_vacio():

@@ -11,11 +11,19 @@ class Tienda:
         for producto in self.inventario:
             if producto.nombre.lower() == nombre.lower():
                 return producto
-        return None
+        raise Exception(f"No se encontro el producto {nombre}")
 
     def eliminar_producto(self, nombre):
         producto = self.buscar_producto(nombre)
         if producto:
             self.inventario.remove(producto)
             return True # Producto eliminado con exito
-        return False # Producto no encontrado
+        return Exception(f"No se puede eliminar el producto {nombre}") # Producto no encontrado
+
+    def actualizar_precio(self, nombre, nuevo_precio):
+        producto = self.buscar_producto(nombre)
+        if producto:
+            if nuevo_precio >= 0:
+                producto.precio = nuevo_precio
+            else:
+                raise Exception("No se puede modificar el precio con un valor negativo")
