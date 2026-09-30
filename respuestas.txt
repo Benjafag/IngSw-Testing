@@ -39,3 +39,8 @@ Tipos principales de cobertura
 
 
 Se realizó una prueba de cobertura de lineas, con pytest-cov generando un resumen de las lineas ejecutadas en distintos archivos html. Se obtuvo un 92% de las lineas ejecutadas al menos una vez.
+
+
+En un escenario de pruebas de integracion ascendente, se cuenta con la clase Producto con sus metodos y atributos totalmente programados y probados de forma aislada. El siguiente paso es el diseño e implementacion de la clase Tienda, por lo que la situacion se plantea de la siguiente manera:
+1. Se crea una clase tienda básica, que interactúe con objetos reales de tipo Producto.
+2. Se van creando tests de integración para verificar que las clases interactuan de manera correcta de acuerdo a las necesidades del sistema
