@@ -26,4 +26,11 @@ class Tienda:
         producto = self.buscar_producto(nombre)
         if producto:
             producto.actualizar_precio(producto.precio * (1 - porcentaje))
-        
+    
+    def calcular_total_carrito(self, carrito):
+        suma = 0
+        for prod in carrito:
+            p = self.buscar_producto(prod)
+            if p:
+                suma += p.precio
+        return suma

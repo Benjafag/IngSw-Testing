@@ -85,3 +85,15 @@ def test_actualizar_precio_doble_invalido():
     tienda.agregar_producto(prod)
     with pytest.raises(Exception):
         tienda.aplicar_descuento("Laptop", -0.5)
+         
+def test_precio_carrito(tienda_fixture):
+    carrito = ["Laptop", "Impresora", "Laptop"]
+    res = tienda_fixture.calcular_total_carrito(carrito)
+    assert res == 4400
+    
+def test_precio_carrito_con_descuento(tienda_fixture):
+    tienda_fixture.aplicar_descuento("Impresora", .5)
+    carrito = ["Impresora", "Mouse"]
+    precio = tienda_fixture.calcular_total_carrito(carrito)
+    assert precio == 1025
+    

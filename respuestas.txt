@@ -26,3 +26,16 @@ La reutilizacion de código es una ventaja en el uso de fixtures, por lo tanto a
 Es un enfoque de caja blanca, porque prueba los detalles internos del sistema, analizando sus distintos estados en diferentes puntos. Visualizando y modificando las clases a probar, conociendo el comportamiento de los objetos y probando en base a ello.
 
 Setup (preparación) y Teardown (limpieza) son fases fundamentales en la automatización de pruebas y desarrollo de software que sirven para preparar el entorno antes de ejecutar un test y dejarlo limpio después
+
+
+5) 
+Definicion
+La prueba de cobertura completa en ingeniería de software es una métrica que mide qué porcentaje del código fuente, las rutas lógicas o los requisitos de una aplicación se ejecutan y validan durante el proceso de pruebas.
+Tipos principales de cobertura
+• Cobertura de lineas (Test Coverage): Mide la cantidad de líneas, sentencias o bloques de código que se ejecutan al correr la suite de pruebas.
+• Cobertura de decisiones (Ramas): Evalúa si se han probado todas las bifurcaciones lógicas posibles (como los resultados verdaderos o falsos en estructuras if/else).
+• Cobertura de caminos: Revisa si se han recorrido todas las rutas posibles de ejecución a través de la totalidad del código.
+• Cobertura de requisitos: Comprueba qué funciones y especificaciones del sistema documentadas cuentan con casos de prueba asociados.
+
+
+Se realizó una prueba de cobertura de lineas, con pytest-cov generando un resumen de las lineas ejecutadas en distintos archivos html. Se obtuvo un 92% de las lineas ejecutadas al menos una vez.
