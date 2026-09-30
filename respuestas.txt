@@ -3,3 +3,17 @@ El proceso es el siguiente y se basa en 3 fases (Red-Green-Refactor):
     1 - Se escriben primero los test, antes que el codigo, con la informacion sobre lo que el metodo debe hacer. En esta fase si se ejecutan los test obviamente fallarán, debido a que el codigo a probarse ni siquiera esta escrito
     2 - Se escribe lo minimo necesario para que el test deje de fallar
     3 - Una vez que el codigo funciona, se puede pasar a limpiar el codigo, hacerlo mas eficiente, estructurarlo mejor, etc. Sabiendo q si por accidente algo deja de funcionar el framework de testing se va a encargar de avisar
+
+
+3) Al usar una clase de apoyo que sustiye la funcionalidad de producto, este doble actúa como un resguardo, mas específicamente como un mock o un fake para la clase tienda.
+Si la clase de apoyo hubiera sido tienda, se trataria de un controlador para producto.
+
+Un doble para test es un objeto que  simula el comportamiento de un componente real para aislar y probar una parte específica del código de forma rápida y segura.
+Sirve por ejemplo en casos donde el objeto original cuenta con muchos metodos pero en un determinado test se necesita uno solo y reduce los costos para el test al no tener que crear el objeto real completo.
+
+Tipos principales de dobles de test
+• Dummy: Objetos que no tienen valor real y solo se pasan para rellenar parámetros obligatorios en las funciones o métodos.
+• Stub: Proporcionan respuestas fijas y predefinidas a las llamadas que recibe durante la prueba, ignorando el resto del comportamiento.
+• Spy: Stubs que además registran información sobre cómo fueron llamados (cuántas veces se usaron, con qué argumentos, etc.).
+• Mock: Objetos preprogramados con expectativas que verifican si la interacción ocurrió de la forma esperada (fallan la prueba si no se llaman correctamente).
+• Fake: Implementaciones que tienen funcionalidad real pero simplificada (por ejemplo, una base de datos en memoria en lugar de un servidor real).

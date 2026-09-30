@@ -20,10 +20,10 @@ class Tienda:
             return True # Producto eliminado con exito
         return Exception(f"No se puede eliminar el producto {nombre}") # Producto no encontrado
 
-    # def aplicar_descuento(self, nombre, porcentaje):
-    #     if porcentaje < 0 or porcentaje > 1:
-    #         raise Exception("El porcentaje debe estar entre 0 y 1")
-    #     producto = self.buscar_producto(nombre)
-    #     if producto:
-    #         producto.actualizar_precio(producto.precio * (1 - porcentaje))
+    def aplicar_descuento(self, nombre, porcentaje):
+        if porcentaje < 0 or porcentaje > 1:
+            raise Exception("El porcentaje debe estar entre 0 y 1")
+        producto = self.buscar_producto(nombre)
+        if producto:
+            producto.actualizar_precio(producto.precio * (1 - porcentaje))
         

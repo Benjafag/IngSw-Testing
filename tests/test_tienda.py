@@ -1,6 +1,7 @@
 from clases.tienda import Tienda
 from clases.producto import Producto
 import pytest
+import types
 
 # PRUEBA DE INTEGRACION, ocupan las 2 clases reales interactuando entre si
 def test_agregar_y_buscar_producto():
@@ -48,23 +49,35 @@ def test_tienda_inicia_inventario_vacio():
     tienda = Tienda()
     assert len(tienda.inventario) == 0
   
-# esto no sabia como hacerlo xd es el pto3  
-# from unittest.mock import MagicMock
-# def test_actualizar_precio_doble_valido():
-#     tienda = Tienda()
-#     prod = MagicMock(nombre = "Laptop", precio = 1200)
-#     tienda.agregar_producto(prod)
+
+from unittest.mock import MagicMock
+def test_actualizar_precio_doble_valido():
+    tienda = Tienda()
+    prod = MagicMock(nombre = "Laptop", precio = 1200)
+    def actualizar_prec(self, nuevo_precio):
+        if nuevo_precio >= 0:
+            self.precio = nuevo_precio
+        else:
+            raise Exception("No se puede modificar el precio con un valor negativo")
+    prod.actualizar_precio = types.MethodType(actualizar_prec, prod)
+
+    tienda.agregar_producto(prod)
+    tienda.aplicar_descuento("Laptop", .5)
     
-#     tienda.aplicar_descuento("Laptop", .5)
+    res = tienda.buscar_producto("Laptop")
+    assert res.precio == 600
+    
 
-# def test_actualizar_precio_doble_invalido():
-#     pass
-# tienda = Tienda()
-# prod = MagicMock(nombre = "Laptop", precio = 1200)
-# prod.actualizar_precio = Producto.actualizar_precio
-# tienda.agregar_producto(prod)
+def test_actualizar_precio_doble_invalido():
+    tienda = Tienda()
+    prod = MagicMock(nombre = "Laptop", precio = 1200)
+    def actualizar_prec(self, nuevo_precio):
+        if nuevo_precio >= 0:
+            self.precio = nuevo_precio
+        else:
+            raise Exception("No se puede modificar el precio con un valor negativo")
+    prod.actualizar_precio = types.MethodType(actualizar_prec, prod)
 
-# # with pytest.raises(Exception):
-# tienda.aplicar_descuento("Laptop", .1)
-
-# print(tienda.buscar_producto("Laptop"))
+    tienda.agregar_producto(prod)
+    with pytest.raises(Exception):
+        tienda.aplicar_descuento("Laptop", -0.5)
