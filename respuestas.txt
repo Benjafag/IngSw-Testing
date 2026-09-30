@@ -17,3 +17,12 @@ Tipos principales de dobles de test
 • Spy: Stubs que además registran información sobre cómo fueron llamados (cuántas veces se usaron, con qué argumentos, etc.).
 • Mock: Objetos preprogramados con expectativas que verifican si la interacción ocurrió de la forma esperada (fallan la prueba si no se llaman correctamente).
 • Fake: Implementaciones que tienen funcionalidad real pero simplificada (por ejemplo, una base de datos en memoria en lugar de un servidor real).
+
+
+4) El fixture es una funcion que se ejecuta antes de cada test, 
+para configurar un estado inicial conocido y controlado, facilitando la preparacion previa necesaria para ejecutar las pruebas.
+
+La reutilizacion de código es una ventaja en el uso de fixtures, por lo tanto ayuda a la mantenibilidad
+Es un enfoque de caja blanca, porque prueba los detalles internos del sistema, analizando sus distintos estados en diferentes puntos. Visualizando y modificando las clases a probar, conociendo el comportamiento de los objetos y probando en base a ello.
+
+Setup (preparación) y Teardown (limpieza) son fases fundamentales en la automatización de pruebas y desarrollo de software que sirven para preparar el entorno antes de ejecutar un test y dejarlo limpio después
